@@ -3,7 +3,7 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args) {
-        encrypFilesAndDelete();
+    //    encrypFilesAndDelete();
         dencrypFile();
 
 
@@ -12,10 +12,9 @@ public class Main {
         String key;
         File eleccion = chooseFile();
         File desencriptado = quitarExtension(eleccion);
-        key = JOptionPane.showInputDialog("put the secret key");
+     //   key = JOptionPane.showInputDialog("put the secret key");
         try {
-            CryptoUtils.decrypt(key,eleccion,eleccion);
-            CryptoUtils.encrypt("123",eleccion,desencriptado);
+            CryptoUtils.decrypt("lapruebaaaaaaaaa",eleccion,desencriptado);
         } catch (CryptoException e) {
             throw new RuntimeException(e);
         }
