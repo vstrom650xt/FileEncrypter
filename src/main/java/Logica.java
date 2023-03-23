@@ -98,4 +98,22 @@ public class Logica {
         return new File(nombreFichero);
     }
 
+    //full encrypt recursivo
+    public static void listarDirectoriosArchivos(File directorio) {
+        // Listar todos los archivos y directorios en el directorio actual
+        File[] archivos = directorio.listFiles();
+
+        // Recorrer cada archivo o directorio y mostrar su nombre
+        for (File archivo : archivos) {
+            if (archivo.isDirectory()) {
+                // Si es un directorio, llamar al método recursivamente
+                System.out.println("Directorio: " + archivo.getAbsolutePath());
+                listarDirectoriosArchivos(archivo);
+            } else {
+                // Si es un archivo, mostrar el nombre
+                System.out.println("Archivo: " + archivo.getAbsolutePath());
+            }
+        }
+    }
+
 }
