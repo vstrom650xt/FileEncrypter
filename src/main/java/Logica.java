@@ -16,10 +16,9 @@ public class Logica {
 
     }
 
-    public static void verCarpeta() {
-
+    public static void encryptFolder(String rutaCarpeta) {
         // Ruta de la carpeta a mostrar el contenido
-        String rutaCarpeta = "/home/gg/EncriptarCArpeta";
+//        String rutaCarpeta = "/home/gg/EncriptarCArpeta";
 
         // Crear un objeto File con la ruta de la carpeta
         File carpeta = new File(rutaCarpeta);
@@ -32,7 +31,7 @@ public class Logica {
             // Mostrar la lista de archivos y carpetas
             for (File archivo : archivos) {
                 try {
-                    File archivo2 = new File(archivo+".todoEncriptado");
+                    File archivo2 = new File(archivo + ".todoEncriptado");
                     CryptoUtils.encrypt("LapruebaaskKey()", archivo, archivo2);
                     archivo.delete();
                 } catch (CryptoException e) {
@@ -104,16 +103,20 @@ public class Logica {
         File[] archivos = directorio.listFiles();
 
         // Recorrer cada archivo o directorio y mostrar su nombre
-        for (File archivo : archivos) {
-            if (archivo.isDirectory()) {
-                // Si es un directorio, llamar al método recursivamente
-                System.out.println("Directorio: " + archivo.getAbsolutePath());
-                listarDirectoriosArchivos(archivo);
-            } else {
-                // Si es un archivo, mostrar el nombre
-                System.out.println("Archivo: " + archivo.getAbsolutePath());
+        if (archivos != null) {
+            for (File archivo : archivos) {
+                if (archivo.isDirectory()) {
+                    // Si es un directorio, llamar al método recursivamente
+                    System.out.println("Directorio: " + archivo.getAbsolutePath());
+                    listarDirectoriosArchivos(archivo);
+                    encryptFolder(archivo.getName());
+                } else {
+                    // Si es un archivo, mostrar el nombre
+                    System.out.println("Archivo: " + archivo.getAbsolutePath());
+                }
+                System.out.println(archivo);
             }
         }
     }
-
 }
+
