@@ -1,3 +1,6 @@
+import controler.CryptoException;
+import controler.CryptoUtils;
+
 import javax.swing.*;
 import java.io.File;
 
